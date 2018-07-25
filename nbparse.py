@@ -8,9 +8,8 @@ Assembled by Eric Easthope
 Usage:
 
 ```
-from nbparse import getNotebooks, nb2md
-notebooks = getNotebooks()
-for notebook in notebooks.items():
+from nbparse import get_notebooks, nb2md
+for notebook in get_notebooks().items():
     nb2md(*notebook)
 ```
 '''
@@ -29,7 +28,7 @@ IMAGE_DIRECTORY =    os.path.join(MODULE_DIRECTORY, 'images')
 if not os.path.exists(MARKDOWN_DIRECTORY): os.makedirs(MARKDOWN_DIRECTORY)
 if not os.path.exists(IMAGE_DIRECTORY):    os.makedirs(IMAGE_DIRECTORY)
 
-def getNotebooks():
+def get_notebooks():
     '''
     get notebook paths recursively and overlook temporary files,
     strip path to parent directory and filename extension for each notebook name,
