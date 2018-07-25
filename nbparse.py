@@ -25,9 +25,6 @@ NOTEBOOK_DIRECTORY = os.path.join(MODULE_DIRECTORY, '_jupyter')
 MARKDOWN_DIRECTORY = os.path.join(MODULE_DIRECTORY, '_posts')
 IMAGE_DIRECTORY =    os.path.join(MODULE_DIRECTORY, 'images')
 
-if not os.path.exists(MARKDOWN_DIRECTORY): os.makedirs(MARKDOWN_DIRECTORY)
-if not os.path.exists(IMAGE_DIRECTORY):    os.makedirs(IMAGE_DIRECTORY)
-
 def get_notebooks():
     '''
     get notebook paths recursively and overlook temporary files,
@@ -73,6 +70,8 @@ def nb2md(name, notebook):
         resources=extractOutputConfig
         )
 
+    if not os.path.exists(IMAGE_DIRECTORY):
+        os.makedirs(IMAGE_DIRECTORY)
     for relative_path, image in resources['outputs'].items():
         image_name = relative_path.split('/')[-1]
         image_path = os.path.join(IMAGE_DIRECTORY, image_name)
@@ -80,5 +79,7 @@ def nb2md(name, notebook):
             image_file.write(image)
 
     markdown_path = os.path.join(MARKDOWN_DIRECTORY, name + '.md')
+    if not os.path.exists(MARKDOWN_DIRECTORY):
+        os.makedirs(MARKDOWN_DIRECTORY)
     with open(markdown_path, 'wb') as markdown_file:
         markdown_file.write(markdown.encode('utf-8'))
