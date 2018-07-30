@@ -1,4 +1,3 @@
-
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
@@ -13,7 +12,7 @@ def main():
         packages=find_packages(),
         include_package_data=True,
         install_requires=[],
-        py_modules=['nbparse']
+        py_modules=['parser']
     )
 
 if __name__ == '__main__':
