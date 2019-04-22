@@ -13,7 +13,7 @@ def main():
         packages=find_packages(),
         include_package_data=True,
         install_requires=[],
-        py_modules=['nbparse']
+        py_modules=['nb2md']
     )
 
 if __name__ == '__main__':
